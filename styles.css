@@ -20,6 +20,16 @@ body {
     justify-items: center;
     grid-template-columns: repeat(3, auto);
 }
+
+.board.x .cell:not(.x):not(.circle):hover::after,
+.board.x .cell:not(.x):not(.circle):hover::before{
+    background: rgb(255,255,255,.3) !important;
+}
+
+.board.circle .cell:not(.x):not(.circle):hover::after,
+.board.circle .cell:not(.x):not(.circle):hover::before{
+    border: 10px solid rgb(255,255,255,.3) !important;
+}
 /* CELLS */
 .cell {
     width: 100px;
@@ -61,7 +71,10 @@ cursor: not-allowed;
 /* X */
 
 
-.cell.x::before, .cell.x::after, .board.x .cell:not(.x):not(.circle):hover::after, .board.x .cell:not(.x):not(.circle):hover::before{
+.cell.x::before,
+.cell.x::after,
+.board.x .cell:not(.x):not(.circle):hover::after,
+.board.x .cell:not(.x):not(.circle):hover::before{
     content: "";
     height: calc(100px * 0.15);
     width: calc(100px * 0.9);
@@ -79,7 +92,10 @@ cursor: not-allowed;
 
 /* Circle */
 
-.cell.circle::before,.cell.circle::after {
+.cell.circle::before,
+.cell.circle::after,
+.board.circle .cell:not(.x):not(.circle):hover::after,
+.board.circle .cell:not(.x):not(.circle):hover::before{
     content: "";
     height: calc(75px * 0.9);
     width: calc(75px * 0.9);
@@ -93,4 +109,38 @@ cursor: not-allowed;
 /* Winning message */
 .winning-message {
     display: none;
+    position: fixed;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0.8);
+    flex-direction: column;
+}
+
+.winning-message-button{
+    font-size: 2.5rem;
+    background-color: rgba(65, 185,131,1);
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    margin-top: 16px;
+    color: white;
+}
+
+.winning-message-button:hover {
+    color:rgba(65, 185,131,1);
+    background-color: white;
+}
+
+.winning-message-text{
+    color: white;
+    font-size: 5rem;
+}
+
+.show-winning-message {
+    display: flex;
 }
